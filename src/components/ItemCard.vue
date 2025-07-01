@@ -1,11 +1,12 @@
 <script setup>
-    import { computed, defineProps, defineEmits } from 'vue';
+    import { computed, defineProps } from 'vue';
     import { useCartStore } from '../stores/cart';
 
     const cartStore = useCartStore();
 
     const props = defineProps({
         product: {
+            // 'product' pode ser um produto da lista ou um item do carrinho
             type: Object,
             required: true,
             default: () => ({
@@ -48,12 +49,15 @@
 <template>
     <div
         class="p-4 border border-gray-300 rounded-md bg-gray-50 text-center shadow-sm"
+        :class="{ 'w-40': type === 'cart-item' }"
+        style="min-width: 160px"
     >
+        >
         <span class="block font-semibold text-lg mb-1 text-gray-800">
             {{ product.name }}
         </span>
         <span class="block text-base text-gray-600 mb-3">
-            R$ {{ product.price }}
+            R$ {{ product.price.toFixed(2) }}
         </span>
 
         <!-- Nenhum conteúdo extra necessário aqui, apenas o botão já existente -->

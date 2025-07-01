@@ -1,9 +1,6 @@
 <script setup>
-    import { useCartStore } from './stores/cart';
     import CartSection from './components/CartSection.vue';
     import ProductListSection from './components/ProductListSection.vue';
-
-    const cartStore = useCartStore();
 </script>
 
 <template>

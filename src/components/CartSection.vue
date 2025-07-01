@@ -9,14 +9,20 @@
         <h2 class="text-2xl font-bold mb-4 text-gray-800">
             Carrinho de Compras
             <span class="text-base text-gray-600 ml-2">
-                R$ {{ cartStore.totalPrice }}
+                R$ {{ cartStore.totalPrice.toFixed(2) }}
             </span>
         </h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div
+            v-if="cartStore.cartItems.length === 0"
+            class="text-gray-600 italic"
+        >
+            Seu carrinho está vazio.
+        </div>
+        <div v-else class="flex flex-wrap gap-4">
             <ItemCard
-                v-for="(item, idx) in cartStore.cartItems"
-                :key="item.id"
+                v-for="item in cartStore.cartItems"
+                :key="item.uniqueId"
                 :product="item"
                 type="cart-item"
             />

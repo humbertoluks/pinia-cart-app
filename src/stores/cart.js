@@ -15,19 +15,26 @@ export const useCartStore = defineStore('cart', {
             const existingProduct = this.cartItems.find(
                 (item) => item.id === product.id
             );
+
             if (!existingProduct) {
-                this.cartItems.push({ ...product, quantity: 1 });
+                const itemToAdd = {
+                    ...product,
+                    uniqueId: Date.now() + Math.random(),
+                };
+
+                this.cartItems.push(itemToAdd);
             }
 
+            // A Promise com setTimeout parece ser para simular uma operação assíncrona.
             return new Promise((resolve) => {
                 setTimeout(() => {
                     resolve();
-                }, 2000);
+                }, 200); // Reduzi o tempo para testes mais rápidos
             });
         },
-        removeFromCart(product) {
+        removeFromCart(uniqueIdToRemove) {
             const index = this.cartItems.findIndex(
-                (item) => item.id === product.id
+                (item) => item.uniqueId === uniqueIdToRemove
             );
             if (index !== -1) {
                 this.cartItems.splice(index, 1);
