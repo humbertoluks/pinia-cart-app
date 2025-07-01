@@ -19,6 +19,7 @@
         >
             Seu carrinho está vazio.
         </div>
+
         <div v-else class="flex flex-wrap gap-4">
             <ItemCard
                 v-for="item in cartStore.cartItems"

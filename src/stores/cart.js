@@ -33,6 +33,9 @@ export const useCartStore = defineStore('cart', {
             });
         },
         removeFromCart(uniqueIdToRemove) {
+            console.log('Removendo item com uniqueId:', uniqueIdToRemove);
+            console.log('Itens no carrinho antes da remoção:', this.cartItems);
+
             const index = this.cartItems.findIndex(
                 (item) => item.uniqueId === uniqueIdToRemove
             );

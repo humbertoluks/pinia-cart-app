@@ -35,7 +35,7 @@
         if (props.type === 'product') {
             cartStore.addToCart(props.product);
         } else {
-            cartStore.removeFromCart(props.product);
+            cartStore.removeFromCart(props.product.uniqueId);
         }
     }
 
@@ -52,7 +52,6 @@
         :class="{ 'w-40': type === 'cart-item' }"
         style="min-width: 160px"
     >
-        >
         <span class="block font-semibold text-lg mb-1 text-gray-800">
             {{ product.name }}
         </span>
